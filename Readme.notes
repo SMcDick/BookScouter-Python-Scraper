@@ -1,0 +1,48 @@
+IMPORTANT INFO:
+Best Sites by percentage of books sold to them:
+Sellbackyourbook (85%)
+Powells (4%)
+textbooks.com (4%)
+Textbook Rush (4%)
+
+THINGS TO DO:
+> Keep track of Duplicate Books (but only to Sellbackyourbook.com).
+>> This means that if it's the only place to sell it, give it a plop, but it also
+>> means that if there are other places to sell it to, we have to go down the line
+>> and find where else it can be sold and give the appropriate response.
+>>> This list of duplicates goes for any book sold to that site.
+>>> So we would have to keep a running list (maybe stored locally in a .txt file)
+>>> that is continually updated and, ideally, backed up.
+>> I will keep track of the duplicates by using their 10-digit ISBN.
+>>> This will take up less space than storing their names and is much easier to check for.
+
+> Have voices recorded for matching name of websites to sell to
+>> If not one of top 4-5 sites, but it's still sellable, keep same bell sound.
+
+
+The hard part will be making the method to handle duplicates. Also if this becomes large
+enough we will switch from a .txt file to an actual database, but for now that's not something
+we need. Handling the duplicates means reading back through the html for the second (or nth) 
+instance of both of our search queries (price and vendor).
+
+
+
+Sudo-code:
+Scan for price (Is there a price):
+	Success:
+	Highest Price == Sellbackyourbook:
+		Success:
+		Check if duplicate:
+			Duplicate:
+			Check if there is another vendor:
+				Success:	
+				Play tone for new Vendor (bell maybe)
+				Failure:
+				Buzz
+			Not a Duplicate:
+			Add to list of books for SBYB and play SBYB tone (continue)
+		Failure:
+		Play tone for vendor or bell
+	Failure:
+	Buzz
+Next Book
